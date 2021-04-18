@@ -1,16 +1,27 @@
-import react from 'react';
+import react , {FC, ReactElement, useCallback, useEffect, useState} from 'react';
 import Input from './input/index';
 import List from './list/index';
 import {Itodo} from './typings';
 
-export default ()=>{
+ const TodoList:FC = ():ReactElement => {
+     const [todoList, setTodolist] = useState<Itodo[]>([])
 
-      const addTodo=(obj: Itodo)=>{
-        console.log('obj', obj)
-      }
+      const addTodo = useCallback((todo: Itodo)=>{
+        setTodolist((todoList)=>[...todoList, todo ])
+      }, [])
+
+      useEffect(
+          ()=>{
+            console.log("todoList", todoList)
+          }, [todoList]
+      )
       return <div>
-          <Input todoList={[]} addTodo={addTodo} />
+          <Input todoList={todoList} addTodo={addTodo} />
           <List   />
       
       </div>
 }
+
+export default TodoList;
+
+// 需要父组件传给子组件的函数都用useCallback包一下
