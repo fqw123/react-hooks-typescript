@@ -13,9 +13,9 @@ export interface IAction{
     payload: Itodo | number
 }
 
-export interface Action_type{
-    ADD_TODO: 'addTodo',
-    REMOVE_TODO: 'removeTodo',
-    TOGGLE_TODO: 'toggle_todo'
+export enum Action_type{
+    ADD_TODO= 'addTodo',
+    REMOVE_TODO='removeTodo',
+    TOGGLE_TODO= 'toggle_todo'
 
 }

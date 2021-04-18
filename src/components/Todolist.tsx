@@ -1,7 +1,7 @@
 import react , {FC, ReactElement, useCallback, useEffect, useReducer} from 'react';
 import Input from './input/index';
 import List from './list/index';
-import {Itodo, Istate} from './typings';
+import {Itodo, Istate, Action_type} from './typings';
 import {todoReducer} from './reducer';
  const TodoList:FC = ():ReactElement => {
     //  const [todoList, setTodolist] = useState<Itodo[]>([])
@@ -11,7 +11,10 @@ import {todoReducer} from './reducer';
     const [state, dispatch] = useReducer(todoReducer, initialState)
 
       const addTodo = useCallback((todo: Itodo)=>{
-  
+        dispatch({
+          type: Action_type.ADD_TODO,
+          payload: todo
+        })
       }, [])
 
       useEffect(
