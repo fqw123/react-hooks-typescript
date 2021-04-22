@@ -17,7 +17,7 @@ import {Itodo} from './typings';
       )
       return <div>
           <Input todoList={todoList} addTodo={addTodo} />
-          <List   />
+          {/* <List   /> */}
       
       </div>
 }

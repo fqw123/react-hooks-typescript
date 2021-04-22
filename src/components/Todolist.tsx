@@ -16,7 +16,19 @@ import {todoReducer} from './reducer';
           payload: todo
         })
       }, [])
+      const toggleTodo = useCallback((id: number) : void=>{
+        dispatch({
+          type: Action_type.TOGGLE_TODO,
+          payload: id,
+        })
+      }, [])
 
+      const removeTodo = useCallback((id:number): void=>{
+          dispatch({
+            type: Action_type.REMOVE_TODO,
+            payload: id
+          })
+      }, [])
       useEffect(
           ()=>{
             console.log("todoList", state.todoList)
@@ -24,7 +36,7 @@ import {todoReducer} from './reducer';
       )
       return <div>
           <Input todoList={state.todoList} addTodo={addTodo} />
-          <List   />
+          <List  todoList={state.todoList}  toggleTodo={toggleTodo} removeTodo={removeTodo}   />
       
       </div>
 }
